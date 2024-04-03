@@ -21,7 +21,7 @@ Note that this example may create resources which will incur monetary charges on
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.5 |
 | <a name="requirement_hcloud"></a> [hcloud](#requirement\_hcloud) | 1.45.0 |
 | <a name="requirement_random"></a> [random](#requirement\_random) | 3.5.1 |
 
