@@ -4,24 +4,24 @@ Terraform module which creates terraform-hcloud-node-pool resources.
 
 ## Usage
 
-See [`examples`](https://github.com/clowdhaus/terraform-aws-<TODO>/tree/main/examples) directory for working examples to reference:
+See [`examples`](https://github.com/hegerdes/terraform-hcloud-node-pool/tree/main/examples) directory for working examples to reference:
 
 ```hcl
-module "<TODO_UNDER>" {
-  source = "clowdhaus/<TODO>/aws"
+module "node_pool" {
+  source = "hegerdes/terraform-hcloud-node-pool/"
 
-  tags = {
-    Terraform   = "true"
-    Environment = "dev"
-  }
+  size     = 1
+  name     = "minimal"
+  location = "fsn1"
+  tags     = local.tags
 }
 ```
 
 ## Examples
 
-Examples codified under the [`examples`](https://github.com/clowdhaus/terraform-aws-<TODO>/tree/main/examples) are intended to give users references for how to use the module(s) as well as testing/validating changes to the source code of the module. If contributing to the project, please be sure to make any appropriate updates to the relevant examples to allow maintainers to test your changes and to keep the examples up to date for users. Thank you!
+Examples codified under the [`examples`](https://github.com/hegerdes/terraform-hcloud-node-pool/tree/main/examples) are intended to give users references for how to use the module(s) as well as testing/validating changes to the source code of the module. If contributing to the project, please be sure to make any appropriate updates to the relevant examples to allow maintainers to test your changes and to keep the examples up to date for users. Thank you!
 
-- [Complete](https://github.com/clowdhaus/terraform-aws-<TODO>/tree/main/examples/complete)
+- [Complete](https://github.com/hegerdes/terraform-hcloud-node-pool/tree/main/examples/complete)
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
@@ -87,4 +87,4 @@ No modules.
 
 ## License
 
-Apache-2.0 Licensed. See [LICENSE](https://github.com/clowdhaus/terraform-aws-<TODO>/blob/main/LICENSE).
+Apache-2.0 Licensed. See [LICENSE](https://github.com/hegerdes/terraform-hcloud-node-poolblob/main/LICENSE).
