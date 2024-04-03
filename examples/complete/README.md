@@ -22,23 +22,32 @@ Note that this example may create resources which will incur monetary charges on
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.0 |
+| <a name="requirement_hcloud"></a> [hcloud](#requirement\_hcloud) | 1.45.0 |
+| <a name="requirement_random"></a> [random](#requirement\_random) | 3.5.1 |
 
 ## Providers
 
-No providers.
+| Name | Version |
+|------|---------|
+| <a name="provider_hcloud"></a> [hcloud](#provider\_hcloud) | 1.45.0 |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_<TODO_UNDER>"></a> [<TODO\_UNDER>](#module\_<TODO\_UNDER>) | ../.. | n/a |
-| <a name="module_<TODO_UNDER>_disabled"></a> [<TODO\_UNDER>\_disabled](#module\_<TODO\_UNDER>\_disabled) | ../.. | n/a |
-| <a name="module_vpc"></a> [vpc](#module\_vpc) | terraform-aws-modules/vpc/aws | ~> 4.0 |
+| <a name="module_advanced"></a> [advanced](#module\_advanced) | ../.. | n/a |
+| <a name="module_disabled"></a> [disabled](#module\_disabled) | ../.. | n/a |
+| <a name="module_minimal"></a> [minimal](#module\_minimal) | ../.. | n/a |
+| <a name="module_named"></a> [named](#module\_named) | ../.. | n/a |
 
 ## Resources
 
-No resources.
+| Name | Type |
+|------|------|
+| [hcloud_network.example](https://registry.terraform.io/providers/hetznercloud/hcloud/1.45.0/docs/resources/network) | resource |
+| [hcloud_network_subnet.subnet_1](https://registry.terraform.io/providers/hetznercloud/hcloud/1.45.0/docs/resources/network_subnet) | resource |
+| [hcloud_network_subnet.subnet_n](https://registry.terraform.io/providers/hetznercloud/hcloud/1.45.0/docs/resources/network_subnet) | resource |
+| [hcloud_ssh_key.example](https://registry.terraform.io/providers/hetznercloud/hcloud/1.45.0/docs/resources/ssh_key) | resource |
 
 ## Inputs
 

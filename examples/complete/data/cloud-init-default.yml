@@ -1,0 +1,28 @@
+#cloud-config
+
+ssh_pwauth: false
+
+groups:
+  - cloud
+
+users:
+  - name: myuser
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    groups: users, cloud
+    shell: /bin/bash
+    lock_passwd: true
+    ssh_authorized_keys:
+%{ for key in ssh_key ~}
+      - ${key}
+%{ endfor ~}
+
+# Install base packages
+package_update: true
+package_upgrade: true
+package_reboot_if_required: true
+
+power_state:
+ mode: reboot
+ message: Bye Bye
+ timeout: 300
+ condition: True

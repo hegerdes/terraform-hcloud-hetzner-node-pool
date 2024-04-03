@@ -1,58 +1,160 @@
-provider "aws" {
-  region = local.region
-}
-
-data "aws_availability_zones" "available" {}
-
 locals {
-  region = "us-east-1"
-  name   = "<TODO>-ex-${basename(path.cwd)}"
-
-  vpc_cidr = "10.0.0.0/16"
-  azs      = slice(data.aws_availability_zones.available.names, 0, 3)
-
+  name            = "hcloud-node-pool-${basename(path.cwd)}"
+  location        = "fsn1"
+  network_name    = "demo-net"
+  ssh_key_paths   = ["~/.ssh/id_rsa.pub", "data/cloud-test.pub"]
+  ssh_keys        = [for key in local.ssh_key_paths : file(key) if fileexists(key)]
+  cloud_init_path = "data/cloud-init-default.yml"
   tags = {
-    Name       = local.name
-    Example    = local.name
-    Repository = "https://github.com/clowdhaus/terraform-aws-<TODO>"
+    name    = local.name
+    example = local.name
+    # repository = "https://github.com/hegerdes/terraform-hcloud-node-pool"
   }
 }
 
 ################################################################################
-# <TODO_EXPANDED> Module
+# hcloud-node-pool Module
 ################################################################################
 
-module "<TODO_UNDER>" {
+module "disabled" {
   source = "../.."
 
-  create = false
-
-  tags = local.tags
+  size     = 0
+  name     = "disabled"
+  location = local.location
 }
 
-module "<TODO_UNDER>_disabled" {
+module "minimal" {
   source = "../.."
 
-  create = false
+  size     = 1
+  name     = "minimal"
+  location = local.location
+  tags     = local.tags
+}
+
+module "named" {
+  source = "../.."
+
+  size          = 3
+  name          = "named"
+  image         = "ubuntu-22.04"
+  vm_names      = ["vm1", "vm2", "vm3"]
+  location      = local.location
+  instance_type = "cax11"
+  public_ipv4   = false
+  ssh_keys      = local.ssh_keys
+  network_name  = local.network_name
+  # Only works if ssh keys below are not created
+  # create_ssh_keys = true
+
+  # Last vm will auto assign a pvt ip
+  private_ip_addresses = ["10.0.0.5", "10.0.0.6", "10.0.0.7"]
+  tags                 = local.tags
+
+  depends_on = [hcloud_network.example]
+
+}
+
+module "advanced" {
+  source   = "../.."
+  for_each = local.node_pools
+
+  name          = each.value.name
+  size          = each.value.size
+  image         = each.value.image
+  location      = each.value.location
+  instance_type = each.value.instance
+  ssh_keys      = each.value.ssh_keys
+
+  tags                 = each.value.tags
+  user_data            = each.value.user_data
+  network_name         = each.value.network_name
+  private_ip_addresses = each.value.private_ip_addresses
+
+  depends_on = [hcloud_network.example]
+}
+
+# Multiple node_pools
+locals {
+  node_pool_config = [
+    {
+      name     = "controlplane-node-amd64"
+      instance = "cx11"
+      image    = "debian-12"
+      size     = 1
+      tags = {
+        k8s = "control-plane"
+      }
+    },
+    {
+      name     = "worker-node-amd64"
+      instance = "cx11"
+      image    = "debian-12"
+      size     = 1
+      tags = {
+        k8s = "worker"
+      }
+      }, {
+      name     = "worker-node-arm64"
+      instance = "cax11"
+      image    = "debian-12"
+      size     = 1
+      tags = {
+        k8s = "worker"
+      }
+    }
+
+  ]
+
+  node_pools = { for index, pool in local.node_pool_config :
+    pool.name => merge(
+      pool, {
+        user_data = templatefile(local.cloud_init_path, {
+          ssh_key = [for key in local.ssh_keys : key]
+        })
+        tags                 = merge(pool.tags, local.tags)
+        ssh_keys             = [for key in hcloud_ssh_key.example : key.name]
+        network_name         = hcloud_network.example.name
+        location             = local.location
+        private_ip_addresses = try([for i in range(pool.size) : cidrhost("10.0.${index + 1}.0/24", i + 8)], [])
+      }
+    )
+  }
 }
 
 ################################################################################
-# Supporting Resources
+# helper
 ################################################################################
 
-module "vpc" {
-  source  = "terraform-aws-modules/vpc/aws"
-  version = "~> 4.0"
+resource "hcloud_network" "example" {
+  name     = local.network_name
+  ip_range = "10.0.0.0/16"
+}
 
-  name = local.name
-  cidr = local.vpc_cidr
+resource "hcloud_network_subnet" "subnet_1" {
+  type         = "cloud"
+  network_id   = hcloud_network.example.id
+  network_zone = "eu-central"
+  ip_range     = "10.0.0.0/24"
+}
 
-  azs             = local.azs
-  public_subnets  = [for k, v in local.azs : cidrsubnet(local.vpc_cidr, 8, k)]
-  private_subnets = [for k, v in local.azs : cidrsubnet(local.vpc_cidr, 8, k + 10)]
+resource "hcloud_ssh_key" "example" {
+  for_each   = toset(local.ssh_keys)
+  name       = sha256(each.key)
+  public_key = each.key
+  lifecycle {
+    create_before_destroy = false
+  }
+}
 
-  enable_nat_gateway = true
-  single_nat_gateway = true
-
-  tags = local.tags
+resource "hcloud_network_subnet" "subnet_n" {
+  type         = "cloud"
+  network_id   = hcloud_network.example.id
+  network_zone = "eu-central"
+  ip_range     = "10.0.${count.index + 1}.0/24"
+  count        = length(local.node_pools)
+  lifecycle {
+    create_before_destroy = false
+  }
 }
