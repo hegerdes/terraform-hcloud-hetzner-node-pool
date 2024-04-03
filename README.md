@@ -28,7 +28,7 @@ Examples codified under the [`examples`](https://github.com/hegerdes/terraform-h
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.5 |
 | <a name="requirement_hcloud"></a> [hcloud](#requirement\_hcloud) | >=1.40 |
 | <a name="requirement_random"></a> [random](#requirement\_random) | >=3.0 |
 
