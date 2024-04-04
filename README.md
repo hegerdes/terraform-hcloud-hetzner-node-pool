@@ -1,14 +1,14 @@
-# terraform-hcloud-node-pool terraform module
+# terraform-hcloud-hetzner-node-pool terraform module
 
-Terraform module which creates terraform-hcloud-node-pool resources.
+Terraform module which creates terraform-hcloud-hetzner-node-pool resources.
 
 ## Usage
 
-See [`examples`](https://github.com/hegerdes/terraform-hcloud-node-pool/tree/main/examples) directory for working examples to reference:
+See [`examples`](https://github.com/hegerdes/terraform-hcloud-hetzner-node-pool/tree/main/examples) directory for working examples to reference:
 
 ```hcl
-module "node_pool" {
-  source = "hegerdes/terraform-hcloud-node-pool/"
+module "hetzner_node_pool" {
+  source = "hegerdes/terraform-hcloud-hetzner-node-pool/"
 
   size     = 1
   name     = "minimal"
@@ -19,9 +19,9 @@ module "node_pool" {
 
 ## Examples
 
-Examples codified under the [`examples`](https://github.com/hegerdes/terraform-hcloud-node-pool/tree/main/examples) are intended to give users references for how to use the module(s) as well as testing/validating changes to the source code of the module. If contributing to the project, please be sure to make any appropriate updates to the relevant examples to allow maintainers to test your changes and to keep the examples up to date for users. Thank you!
+Examples codified under the [`examples`](https://github.com/hegerdes/terraform-hcloud-hetzner-node-pool/tree/main/examples) are intended to give users references for how to use the module(s) as well as testing/validating changes to the source code of the module. If contributing to the project, please be sure to make any appropriate updates to the relevant examples to allow maintainers to test your changes and to keep the examples up to date for users. Thank you!
 
-- [Complete](https://github.com/hegerdes/terraform-hcloud-node-pool/tree/main/examples/complete)
+- [Complete](https://github.com/hegerdes/terraform-hcloud-hetzner-node-pool/tree/main/examples/complete)
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
@@ -87,4 +87,4 @@ No modules.
 
 ## License
 
-Apache-2.0 Licensed. See [LICENSE](https://github.com/hegerdes/terraform-hcloud-node-poolblob/main/LICENSE).
+Apache-2.0 Licensed. See [LICENSE](https://github.com/hegerdes/terraform-hcloud-hetzner-node-poolblob/main/LICENSE).
