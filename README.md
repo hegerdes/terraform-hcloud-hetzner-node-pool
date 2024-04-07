@@ -60,7 +60,7 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_backups"></a> [backups](#input\_backups) | Backups enabled | `bool` | `false` | no |
 | <a name="input_create_ssh_keys"></a> [create\_ssh\_keys](#input\_create\_ssh\_keys) | Hetzner allows create a ssh key only once. By default you have to create them before. If you set this flag the module will create them. | `bool` | `false` | no |
-| <a name="input_firewall_ids"></a> [firewall\_ids](#input\_firewall\_ids) | Ids of firewall attacted to the server | `list(string)` | `[]` | no |
+| <a name="input_firewall_ids"></a> [firewall\_ids](#input\_firewall\_ids) | Ids of firewall attacted to the server | `list(string)` | `null` | no |
 | <a name="input_image"></a> [image](#input\_image) | Node image name. | `string` | `"debian-12"` | no |
 | <a name="input_instance_type"></a> [instance\_type](#input\_instance\_type) | Node instance type. | `string` | `"cx11"` | no |
 | <a name="input_location"></a> [location](#input\_location) | Node location. | `string` | n/a | yes |

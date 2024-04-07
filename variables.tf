@@ -111,5 +111,5 @@ variable "snapshot_image" {
 variable "firewall_ids" {
   type        = list(string)
   description = "Ids of firewall attacted to the server"
-  default     = []
+  default     = null
 }
