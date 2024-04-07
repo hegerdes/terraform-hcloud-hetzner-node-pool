@@ -79,7 +79,7 @@ resource "hcloud_server" "this" {
     for_each = var.network_name != null ? [1] : []
     content {
       network_id = data.hcloud_network.this[0].id
-      ip         = var.private_ip_addresses[each.value]
+      ip         = length(var.private_ip_addresses) > 0 ? var.private_ip_addresses[each.value] : null
       alias_ips  = length(local.vms) == 1 ? try(slice(var.private_ip_addresses, 1, length(var.private_ip_addresses) - 1), null) : null
     }
   }
