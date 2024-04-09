@@ -16,6 +16,7 @@ module "hetzner_node_pool" {
   tags     = local.tags
 }
 ```
+*NOTE:* Due to an [issue](https://github.com/hetznercloud/terraform-provider-hcloud/issues/911) in the hetzner terraform provider, it is currently not possible to set firewall ids via labels and via the `firewall_ids` input. Users have to decide for one of these methods.
 
 ## Examples
 
