@@ -1,6 +1,6 @@
 # terraform-hcloud-hetzner-node-pool terraform module
 
-Terraform module which creates terraform-hcloud-hetzner-node-pool resources.
+Terraform module which creates terraform-hcloud-hetzner-node-pool resources. The module can be found on the [terraform.io registry](https://registry.terraform.io/modules/hegerdes/hetzner-node-pool/hcloud/latest) or on [github](https://github.com/hegerdes/terraform-hcloud-hetzner-node-pool).
 
 ## Usage
 
