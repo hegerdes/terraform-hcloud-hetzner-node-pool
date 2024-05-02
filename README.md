@@ -11,9 +11,9 @@ module "hetzner_node_pool" {
   source = "hegerdes/terraform-hcloud-hetzner-node-pool/"
 
   size     = 1
-  name     = "minimal"
+  name     = "example"
   location = "fsn1"
-  tags     = local.tags
+  tags     = {cloud = "true"}
 }
 ```
 *NOTE:* Due to an [issue](https://github.com/hetznercloud/terraform-provider-hcloud/issues/911) in the hetzner terraform provider, it is currently not possible to set firewall ids via labels and via the `firewall_ids` input. Users have to decide for one of these methods.
@@ -62,6 +62,7 @@ No modules.
 | <a name="input_backups"></a> [backups](#input\_backups) | Backups enabled | `bool` | `false` | no |
 | <a name="input_create_ssh_keys"></a> [create\_ssh\_keys](#input\_create\_ssh\_keys) | Hetzner allows create a ssh key only once. By default you have to create them before. If you set this flag the module will create them. | `bool` | `false` | no |
 | <a name="input_firewall_ids"></a> [firewall\_ids](#input\_firewall\_ids) | Ids of firewall attacted to the server | `list(string)` | `null` | no |
+| <a name="input_fixed_disk_size"></a> [fixed\_disk\_size](#input\_fixed\_disk\_size) | Whether the disk size should also be upgraded when scaling up. If true, downgrades may not be possible anymore. | `bool` | `false` | no |
 | <a name="input_image"></a> [image](#input\_image) | Node image name. | `string` | `"debian-12"` | no |
 | <a name="input_instance_type"></a> [instance\_type](#input\_instance\_type) | Node instance type. | `string` | `"cx11"` | no |
 | <a name="input_location"></a> [location](#input\_location) | Node location. | `string` | n/a | yes |
@@ -70,7 +71,7 @@ No modules.
 | <a name="input_private_ip_addresses"></a> [private\_ip\_addresses](#input\_private\_ip\_addresses) | Node private ips. Network name must be set for this. | `list(string)` | `[]` | no |
 | <a name="input_public_ipv4"></a> [public\_ipv4](#input\_public\_ipv4) | Node public ipv4 ip | `bool` | `true` | no |
 | <a name="input_public_ipv6"></a> [public\_ipv6](#input\_public\_ipv6) | Node public ipv6 ip | `bool` | `true` | no |
-| <a name="input_size"></a> [size](#input\_size) | Nuber of nodes to create. Will only be used if vm\_names is empty. | `number` | `1` | no |
+| <a name="input_size"></a> [size](#input\_size) | Number of nodes to create. Will only be used if vm\_names is empty. | `number` | `1` | no |
 | <a name="input_snapshot_image"></a> [snapshot\_image](#input\_snapshot\_image) | Node image is snapshot | `bool` | `false` | no |
 | <a name="input_ssh_keys"></a> [ssh\_keys](#input\_ssh\_keys) | Nodes public ssh keys ids or names or the key itself. If its the key you have to set create\_ssh\_keys. | `list(string)` | `[]` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | Node tags/labels | `any` | `{}` | no |

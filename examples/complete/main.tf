@@ -43,7 +43,7 @@ module "named" {
   location      = local.location
   instance_type = "cax11"
   public_ipv4   = false
-  ssh_keys      = local.ssh_keys
+  ssh_keys      = [for key in hcloud_ssh_key.example : key.name]
   network_name  = local.network_name
   # Only works if ssh keys below are not created
   # create_ssh_keys = true

@@ -55,7 +55,11 @@ No inputs.
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+|------|-------------|
+| <a name="output_vm_names_advanced"></a> [vm\_names\_advanced](#output\_vm\_names\_advanced) | The names of the created vms. |
+| <a name="output_vm_names_minimal"></a> [vm\_names\_minimal](#output\_vm\_names\_minimal) | The names of the created vms. |
+| <a name="output_vm_names_named"></a> [vm\_names\_named](#output\_vm\_names\_named) | The names of the created vms. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 Apache-2.0 Licensed. See [LICENSE](https://github.com/clowdhaus/terraform-aws-<TODO>/blob/main/LICENSE).

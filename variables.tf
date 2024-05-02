@@ -9,7 +9,7 @@ variable "name" {
 
 variable "size" {
   type        = number
-  description = "Nuber of nodes to create. Will only be used if vm_names is empty."
+  description = "Number of nodes to create. Will only be used if vm_names is empty."
   default     = 1
   validation {
     condition     = var.size >= 0
@@ -69,6 +69,12 @@ variable "tags" {
 variable "backups" {
   type        = bool
   description = "Backups enabled"
+  default     = false
+}
+
+variable "fixed_disk_size" {
+  type        = bool
+  description = "Whether the disk size should also be upgraded when scaling up. If true, downgrades may not be possible anymore."
   default     = false
 }
 
