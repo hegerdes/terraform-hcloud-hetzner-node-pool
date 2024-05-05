@@ -22,14 +22,14 @@ Note that this example may create resources which will incur monetary charges on
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.5 |
-| <a name="requirement_hcloud"></a> [hcloud](#requirement\_hcloud) | 1.45.0 |
-| <a name="requirement_random"></a> [random](#requirement\_random) | 3.5.1 |
+| <a name="requirement_hcloud"></a> [hcloud](#requirement\_hcloud) | 1.47.0 |
+| <a name="requirement_random"></a> [random](#requirement\_random) | 3.6.1 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_hcloud"></a> [hcloud](#provider\_hcloud) | 1.45.0 |
+| <a name="provider_hcloud"></a> [hcloud](#provider\_hcloud) | 1.47.0 |
 
 ## Modules
 
@@ -44,10 +44,10 @@ Note that this example may create resources which will incur monetary charges on
 
 | Name | Type |
 |------|------|
-| [hcloud_network.example](https://registry.terraform.io/providers/hetznercloud/hcloud/1.45.0/docs/resources/network) | resource |
-| [hcloud_network_subnet.subnet_1](https://registry.terraform.io/providers/hetznercloud/hcloud/1.45.0/docs/resources/network_subnet) | resource |
-| [hcloud_network_subnet.subnet_n](https://registry.terraform.io/providers/hetznercloud/hcloud/1.45.0/docs/resources/network_subnet) | resource |
-| [hcloud_ssh_key.example](https://registry.terraform.io/providers/hetznercloud/hcloud/1.45.0/docs/resources/ssh_key) | resource |
+| [hcloud_network.example](https://registry.terraform.io/providers/hetznercloud/hcloud/1.47.0/docs/resources/network) | resource |
+| [hcloud_network_subnet.subnet_1](https://registry.terraform.io/providers/hetznercloud/hcloud/1.47.0/docs/resources/network_subnet) | resource |
+| [hcloud_network_subnet.subnet_n](https://registry.terraform.io/providers/hetznercloud/hcloud/1.47.0/docs/resources/network_subnet) | resource |
+| [hcloud_ssh_key.example](https://registry.terraform.io/providers/hetznercloud/hcloud/1.47.0/docs/resources/ssh_key) | resource |
 
 ## Inputs
 
