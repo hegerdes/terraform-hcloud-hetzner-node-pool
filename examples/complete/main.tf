@@ -89,7 +89,7 @@ locals {
     },
     {
       name     = "worker-node-amd64"
-      instance = "cx11"
+      instance = "cx22"
       image    = "debian-12"
       size     = 1
       tags = {
