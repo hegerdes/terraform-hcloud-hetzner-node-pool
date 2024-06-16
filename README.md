@@ -84,10 +84,12 @@ No modules.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_ids"></a> [ids](#output\_ids) | List of all ids for every created server. |
-| <a name="output_ips"></a> [ips](#output\_ips) | List of all public ips of every created server. Includes IPv4 & IPv6. |
-| <a name="output_names"></a> [names](#output\_names) | List of all names for every created server. |
-| <a name="output_volumes"></a> [volumes](#output\_volumes) | List of all additional disks for every created server. |
+| <a name="output_name"></a> [name](#output\_name) | The name of the node pool. |
+| <a name="output_vm_ids"></a> [vm\_ids](#output\_vm\_ids) | List of all ids for every created server. |
+| <a name="output_vm_ips"></a> [vm\_ips](#output\_vm\_ips) | List of all public ips of every created server. Includes IPv4 & IPv6. |
+| <a name="output_vm_names"></a> [vm\_names](#output\_vm\_names) | List of all names for every created server. |
+| <a name="output_vm_volumes"></a> [vm\_volumes](#output\_vm\_volumes) | List of all additional disks for every created server. |
+| <a name="output_vms"></a> [vms](#output\_vms) | Object of vm data. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## License
