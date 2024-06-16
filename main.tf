@@ -1,19 +1,21 @@
 # Shared and calculated vars
 locals {
-  tags       = merge(local.default_tags, var.tags)
-  image      = local.is_snapshot ? data.hcloud_image.this[0].id : var.image
+  # Names of vm and vm objects
   user_names = length(var.vm_names) > 0
   vms        = local.user_names ? var.vm_names : [for i in range(var.size) : tostring(i)]
+  ssh_keys   = var.create_ssh_keys ? [for key in hcloud_ssh_key.this : key.name] : var.ssh_keys
 
+  # Image and Arch setup
+  image       = local.is_snapshot ? data.hcloud_image.this[0].id : var.image
   is_snapshot = var.snapshot_image || strcontains(var.image, "snapshot")
+  is_arm      = contains(["cax11", "cax21", "cax31", "cax41"], lower(var.instance_type))
+  arch        = local.is_arm ? "arm64" : "amd64"
+
+  # Tags
+  tags = merge(local.default_tags, var.tags)
   default_tags = {
     managedby = "terraform"
   }
-  is_arm = contains(["cax11", "cax21", "cax31", "cax41"], lower(var.instance_type))
-  arch   = local.is_arm ? "arm64" : "amd64"
-
-  ssh_keys = var.create_ssh_keys ? [for key in hcloud_ssh_key.this : key.name] : var.ssh_keys
-
 }
 
 # Get image if snapshot is used
@@ -53,7 +55,6 @@ resource "hcloud_ssh_key" "this" {
   lifecycle {
     create_before_destroy = false
   }
-
 }
 
 # Create servers
