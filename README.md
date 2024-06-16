@@ -64,7 +64,7 @@ No modules.
 | <a name="input_firewall_ids"></a> [firewall\_ids](#input\_firewall\_ids) | Ids of firewall attacted to the server | `list(string)` | `null` | no |
 | <a name="input_fixed_disk_size"></a> [fixed\_disk\_size](#input\_fixed\_disk\_size) | Whether the disk size should also be upgraded when scaling up. If true, downgrades may not be possible anymore. | `bool` | `false` | no |
 | <a name="input_image"></a> [image](#input\_image) | Node image name. | `string` | `"debian-12"` | no |
-| <a name="input_instance_type"></a> [instance\_type](#input\_instance\_type) | Node instance type. | `string` | `"cx11"` | no |
+| <a name="input_instance_type"></a> [instance\_type](#input\_instance\_type) | Node instance type. | `string` | `"cx22"` | no |
 | <a name="input_location"></a> [location](#input\_location) | Node location. | `string` | n/a | yes |
 | <a name="input_name"></a> [name](#input\_name) | Node name prefix. | `string` | n/a | yes |
 | <a name="input_network_name"></a> [network\_name](#input\_network\_name) | Node network name | `string` | `null` | no |
