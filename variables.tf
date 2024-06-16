@@ -48,6 +48,16 @@ variable "instance_type" {
   }
 }
 
+variable "volumes" {
+  type = list(object({
+    name   = string
+    size   = number
+    format = optional(string, "ext4")
+  }))
+  description = "Extra Hetzer volumes added to each server."
+  default     = []
+}
+
 variable "ssh_keys" {
   type        = list(string)
   description = "Nodes public ssh keys ids or names or the key itself. If its the key you have to set create_ssh_keys."

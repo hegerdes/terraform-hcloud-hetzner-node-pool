@@ -51,6 +51,7 @@ No modules.
 | [hcloud_placement_group.this](https://registry.terraform.io/providers/hetznercloud/hcloud/latest/docs/resources/placement_group) | resource |
 | [hcloud_server.this](https://registry.terraform.io/providers/hetznercloud/hcloud/latest/docs/resources/server) | resource |
 | [hcloud_ssh_key.this](https://registry.terraform.io/providers/hetznercloud/hcloud/latest/docs/resources/ssh_key) | resource |
+| [hcloud_volume.this](https://registry.terraform.io/providers/hetznercloud/hcloud/latest/docs/resources/volume) | resource |
 | [random_string.this](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/string) | resource |
 | [hcloud_image.this](https://registry.terraform.io/providers/hetznercloud/hcloud/latest/docs/data-sources/image) | data source |
 | [hcloud_network.this](https://registry.terraform.io/providers/hetznercloud/hcloud/latest/docs/data-sources/network) | data source |
@@ -77,6 +78,7 @@ No modules.
 | <a name="input_tags"></a> [tags](#input\_tags) | Node tags/labels | `any` | `{}` | no |
 | <a name="input_user_data"></a> [user\_data](#input\_user\_data) | Node user data (cloud-init) | `string` | `null` | no |
 | <a name="input_vm_names"></a> [vm\_names](#input\_vm\_names) | List of names for the VMs. to create | `list(string)` | `[]` | no |
+| <a name="input_volumes"></a> [volumes](#input\_volumes) | Extra Hetzer volumes added to each server. | <pre>list(object({<br>    name   = string<br>    size   = number<br>    format = optional(string, "ext4")<br>  }))</pre> | `[]` | no |
 
 ## Outputs
 
@@ -85,6 +87,7 @@ No modules.
 | <a name="output_ids"></a> [ids](#output\_ids) | List of all ids for every created server. |
 | <a name="output_ips"></a> [ips](#output\_ips) | List of all public ips of every created server. Includes IPv4 & IPv6. |
 | <a name="output_names"></a> [names](#output\_names) | List of all names for every created server. |
+| <a name="output_volumes"></a> [volumes](#output\_volumes) | List of all additional disks for every created server. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## License

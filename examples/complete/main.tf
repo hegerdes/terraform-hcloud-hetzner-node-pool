@@ -45,6 +45,7 @@ module "named" {
   public_ipv4   = false
   ssh_keys      = [for key in hcloud_ssh_key.example : key.name]
   network_name  = local.network_name
+  volumes       = [{ name = "data", size = 10 }]
   # Only works if ssh keys below are not created
   # create_ssh_keys = true
 
@@ -68,6 +69,7 @@ module "advanced" {
   ssh_keys      = each.value.ssh_keys
 
   tags                 = each.value.tags
+  volumes              = each.value.volumes
   user_data            = each.value.user_data
   network_name         = each.value.network_name
   private_ip_addresses = each.value.private_ip_addresses
@@ -80,31 +82,31 @@ locals {
   node_pool_config = [
     {
       name     = "controlplane-node-amd64"
+      size     = 1
       instance = "cx11"
       image    = "debian-12"
-      size     = 1
+      volumes  = [{ name = "vol1", size = 10 }, { name = "vol2", size = 15 }]
       tags = {
         k8s = "control-plane"
       }
     },
     {
       name     = "worker-node-amd64"
+      size     = 1
       instance = "cx22"
       image    = "debian-12"
-      size     = 1
       tags = {
         k8s = "worker"
       }
       }, {
       name     = "worker-node-arm64"
+      size     = 1
       instance = "cax11"
       image    = "debian-12"
-      size     = 1
       tags = {
         k8s = "worker"
       }
     }
-
   ]
 
   node_pools = { for index, pool in local.node_pool_config :
@@ -117,6 +119,7 @@ locals {
         ssh_keys             = [for key in hcloud_ssh_key.example : key.name]
         network_name         = hcloud_network.example.name
         location             = local.location
+        volumes              = try(pool.volumes, [])
         private_ip_addresses = try([for i in range(pool.size) : cidrhost("10.0.${index + 1}.0/24", i + 8)], [])
       }
     )

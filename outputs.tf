@@ -11,3 +11,7 @@ output "ips" {
   value       = concat([for srv in hcloud_server.this : srv.ipv4_address], [for srv in hcloud_server.this : srv.ipv6_address])
   description = "List of all public ips of every created server. Includes IPv4 & IPv6."
 }
+output "volumes" {
+  value       = [for vol in hcloud_volume.this : vol.name]
+  description = "List of all additional disks for every created server."
+}

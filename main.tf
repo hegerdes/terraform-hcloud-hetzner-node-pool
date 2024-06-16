@@ -11,6 +11,12 @@ locals {
   is_arm      = contains(["cax11", "cax21", "cax31", "cax41"], lower(var.instance_type))
   arch        = local.is_arm ? "arm64" : "amd64"
 
+  # Create product of servers and volumes
+  volumes_map = setproduct([for srv in hcloud_server.this : srv], var.volumes)
+  volumes = { for index, vol in local.volumes_map :
+    "${vol[1].name}-${floor(index / length(var.volumes))}" => merge(vol[0], vol[1], { server_name = vol[0].name })
+  }
+
   # Tags
   tags = merge(local.default_tags, var.tags)
   default_tags = {
@@ -55,6 +61,16 @@ resource "hcloud_ssh_key" "this" {
   lifecycle {
     create_before_destroy = false
   }
+}
+
+# Create volumes
+resource "hcloud_volume" "this" {
+  for_each  = local.volumes
+  name      = "${each.value.name}-${each.value.server_name}"
+  size      = each.value.size
+  server_id = each.value.id
+  automount = true
+  format    = each.value.format
 }
 
 # Create servers
