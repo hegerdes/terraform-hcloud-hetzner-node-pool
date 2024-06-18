@@ -5,7 +5,11 @@ output "name" {
 }
 output "vms" {
   value       = { for srv in hcloud_server.this : srv.name => srv }
-  description = "Object of vm data."
+  description = "Object of vm data based on name."
+}
+output "vms_raw" {
+  value       = hcloud_server.this
+  description = "Raw object of hcloud server objects."
 }
 output "vm_names" {
   value       = [for srv in hcloud_server.this : srv.name]

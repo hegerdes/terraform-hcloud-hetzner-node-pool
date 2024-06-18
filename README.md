@@ -89,7 +89,8 @@ No modules.
 | <a name="output_vm_ips"></a> [vm\_ips](#output\_vm\_ips) | List of all public ips of every created server. Includes IPv4 & IPv6. |
 | <a name="output_vm_names"></a> [vm\_names](#output\_vm\_names) | List of all names for every created server. |
 | <a name="output_vm_volumes"></a> [vm\_volumes](#output\_vm\_volumes) | List of all additional disks for every created server. |
-| <a name="output_vms"></a> [vms](#output\_vms) | Object of vm data. |
+| <a name="output_vms"></a> [vms](#output\_vms) | Object of vm data based on name. |
+| <a name="output_vms_raw"></a> [vms\_raw](#output\_vms\_raw) | Raw object of hcloud server objects. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## License
