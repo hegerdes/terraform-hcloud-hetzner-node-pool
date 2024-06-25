@@ -3,11 +3,11 @@ name: Release
 on:
   push:
     tags:
-      - "*"
+      - "v*"
 
 jobs:
-  release:
-    name: Release
+  gh-release:
+    name: gh-release
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -16,19 +16,8 @@ jobs:
           fetch-depth: 0
           fetch-tags: true
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
-
-      - name: Update refs
-        run: git fetch --tags --update-head-ok --force
-
       - name: Release
-        uses: cycjimmy/semantic-release-action@v4
+        uses: softprops/action-gh-release@v2
         with:
-          semantic_version: 23.0.0
-          extra_plugins: |
-            @semantic-release/changelog@6.0.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          name: hcloud-node-pool ${{ github.ref_name }}
+          generate_release_notes: true
