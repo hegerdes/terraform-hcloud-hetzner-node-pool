@@ -33,8 +33,8 @@ variable "location" {
   type        = string
   description = "Node location."
   validation {
-    condition     = contains(["fsn1", "nbg1", "hel1", "ash", "hil"], lower(var.location))
-    error_message = "Unsupported location type."
+    condition     = contains(["fsn1", "nbg1", "hel1", "ash", "hil", "sin"], lower(var.location))
+    error_message = "Unsupported location."
   }
 }
 
