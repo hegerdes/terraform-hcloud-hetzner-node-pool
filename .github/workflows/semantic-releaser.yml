@@ -5,6 +5,10 @@ on:
     tags:
       - "v*"
 
+permissions:
+  attestations: write
+  contents: write
+
 jobs:
   gh-release:
     name: gh-release
