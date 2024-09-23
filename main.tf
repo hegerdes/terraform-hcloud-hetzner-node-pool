@@ -75,18 +75,19 @@ resource "hcloud_volume" "this" {
 
 # Create servers
 resource "hcloud_server" "this" {
-  for_each           = { for index, vm in local.vms : vm => index }
-  name               = "${var.name}-${local.user_names ? each.key : random_string.this[each.key].result}"
-  image              = local.image
-  server_type        = var.instance_type
-  location           = var.location
-  user_data          = var.user_data
-  backups            = var.backups
-  keep_disk          = var.fixed_disk_size
-  firewall_ids       = var.firewall_ids
-  labels             = merge(local.tags, { sku = var.instance_type, arch = local.arch })
-  ssh_keys           = local.ssh_keys
-  placement_group_id = hcloud_placement_group.this.id
+  for_each                 = { for index, vm in local.vms : vm => index }
+  name                     = "${var.name}-${local.user_names ? each.key : random_string.this[each.key].result}"
+  image                    = local.image
+  server_type              = var.instance_type
+  location                 = var.location
+  user_data                = var.user_data
+  backups                  = var.backups
+  keep_disk                = var.fixed_disk_size
+  firewall_ids             = var.firewall_ids
+  labels                   = merge(local.tags, { sku = var.instance_type, arch = local.arch })
+  ssh_keys                 = local.ssh_keys
+  placement_group_id       = hcloud_placement_group.this.id
+  shutdown_before_deletion = var.shutdown_before_deletion
 
   public_net {
     ipv4_enabled = var.public_ipv4

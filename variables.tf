@@ -70,6 +70,12 @@ variable "create_ssh_keys" {
   default     = false
 }
 
+variable "shutdown_before_deletion" {
+  type        = bool
+  description = "Will issue a shutdown command before deleting the server."
+  default     = false
+}
+
 variable "tags" {
   type        = any
   description = "Node tags/labels"

@@ -72,6 +72,7 @@ No modules.
 | <a name="input_private_ip_addresses"></a> [private\_ip\_addresses](#input\_private\_ip\_addresses) | Node private ips. Network name must be set for this. | `list(string)` | `[]` | no |
 | <a name="input_public_ipv4"></a> [public\_ipv4](#input\_public\_ipv4) | Node public ipv4 ip | `bool` | `true` | no |
 | <a name="input_public_ipv6"></a> [public\_ipv6](#input\_public\_ipv6) | Node public ipv6 ip | `bool` | `true` | no |
+| <a name="input_shutdown_before_deletion"></a> [shutdown\_before\_deletion](#input\_shutdown\_before\_deletion) | Will issue a shutdown command before deleting the server. | `bool` | `false` | no |
 | <a name="input_size"></a> [size](#input\_size) | Number of nodes to create. Will only be used if vm\_names is empty. | `number` | `1` | no |
 | <a name="input_snapshot_image"></a> [snapshot\_image](#input\_snapshot\_image) | Node image is snapshot | `bool` | `false` | no |
 | <a name="input_ssh_keys"></a> [ssh\_keys](#input\_ssh\_keys) | Nodes public ssh keys ids or names or the key itself. If its the key you have to set create\_ssh\_keys. | `list(string)` | `[]` | no |

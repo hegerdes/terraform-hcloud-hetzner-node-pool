@@ -36,16 +36,17 @@ module "minimal" {
 module "named" {
   source = "../.."
 
-  size          = 3
-  name          = "named"
-  image         = "ubuntu-22.04"
-  vm_names      = ["vm1", "vm2", "vm3"]
-  location      = local.location
-  instance_type = "cax11"
-  public_ipv4   = false
-  ssh_keys      = [for key in hcloud_ssh_key.example : key.name]
-  network_name  = local.network_name
-  volumes       = [{ name = "data", size = 10 }]
+  size                     = 3
+  name                     = "named"
+  image                    = "ubuntu-22.04"
+  vm_names                 = ["vm1", "vm2", "vm3"]
+  location                 = local.location
+  instance_type            = "cax11"
+  public_ipv4              = false
+  ssh_keys                 = [for key in hcloud_ssh_key.example : key.name]
+  network_name             = local.network_name
+  volumes                  = [{ name = "data", size = 10 }]
+  shutdown_before_deletion = true
   # Only works if ssh keys below are not created
   # create_ssh_keys = true
 
