@@ -84,7 +84,7 @@ locals {
     {
       name     = "controlplane-node-amd64"
       size     = 1
-      instance = "cx11"
+      instance = "cx22"
       image    = "debian-12"
       volumes  = [{ name = "vol1", size = 10 }, { name = "vol2", size = 15 }]
       tags = {
