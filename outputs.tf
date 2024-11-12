@@ -20,7 +20,7 @@ output "vm_ids" {
   description = "List of all ids for every created server."
 }
 output "vm_ips" {
-  value       = concat([for srv in hcloud_server.this : srv.ipv4_address], [for srv in hcloud_server.this : srv.ipv6_address])
+  value       = concat([for srv in hcloud_server.this : srv.ipv4_address if srv.ipv4_address != ""], [for srv in hcloud_server.this : srv.ipv6_address if srv.ipv6_address != ""])
   description = "List of all public ips of every created server. Includes IPv4 & IPv6."
 }
 output "vm_volumes" {
