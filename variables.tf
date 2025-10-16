@@ -26,7 +26,7 @@ variable "vm_names" {
 variable "image" {
   type        = string
   description = "Node image name."
-  default     = "debian-12"
+  default     = "debian-13"
 }
 
 variable "location" {
@@ -41,9 +41,9 @@ variable "location" {
 variable "instance_type" {
   type        = string
   description = "Node instance type."
-  default     = "cx22"
+  default     = "cx23"
   validation {
-    condition     = contains(["cx11", "cx21", "cx22", "cx31", "cx32", "cx41", "cx42", "cx51", "cx52", "cpx11", "cpx21", "cpx31", "cpx41", "cpx51", "ccx12", "ccx22", "ccx32", "ccx42", "ccx52", "ccx62", "ccx13", "ccx23", "ccx33", "ccx43", "ccx53", "ccx63", "cax11", "cax21", "cax31", "cax41"], lower(var.instance_type))
+    condition     = contains(["cx11", "cx21", "cx22", "cx23", "cx31", "cx32", "cx33", "cx41", "cx42", "cx43", "cx51", "cx52", "cx53", "cpx11", "cpx21", "cpx31", "cpx41", "cpx51", "ccx13", "ccx23", "ccx33", "ccx43", "ccx53", "ccx63", "ccx13", "ccx23", "ccx33", "ccx43", "ccx53", "ccx63", "cax11", "cax21", "cax31", "cax41"], lower(var.instance_type))
     error_message = "Unsupported server type."
   }
 }

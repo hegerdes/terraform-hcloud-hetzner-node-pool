@@ -3,11 +3,11 @@ terraform {
   required_providers {
     hcloud = {
       source  = "hetznercloud/hcloud"
-      version = "1.47.0"
+      version = "1.54.0"
     }
     random = {
       source  = "hashicorp/random"
-      version = "3.6.1"
+      version = "3.7.2"
     }
   }
 }

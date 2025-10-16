@@ -24,7 +24,7 @@ Examples codified under the [`examples`](https://github.com/hegerdes/terraform-h
 
 - [Complete](https://github.com/hegerdes/terraform-hcloud-hetzner-node-pool/tree/main/examples/complete)
 
-<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
@@ -64,8 +64,8 @@ No modules.
 | <a name="input_create_ssh_keys"></a> [create\_ssh\_keys](#input\_create\_ssh\_keys) | Hetzner allows create a ssh key only once. By default you have to create them before. If you set this flag the module will create them. | `bool` | `false` | no |
 | <a name="input_firewall_ids"></a> [firewall\_ids](#input\_firewall\_ids) | Ids of firewall attacted to the server | `list(string)` | `null` | no |
 | <a name="input_fixed_disk_size"></a> [fixed\_disk\_size](#input\_fixed\_disk\_size) | Whether the disk size should also be upgraded when scaling up. If true, downgrades may not be possible anymore. | `bool` | `false` | no |
-| <a name="input_image"></a> [image](#input\_image) | Node image name. | `string` | `"debian-12"` | no |
-| <a name="input_instance_type"></a> [instance\_type](#input\_instance\_type) | Node instance type. | `string` | `"cx22"` | no |
+| <a name="input_image"></a> [image](#input\_image) | Node image name. | `string` | `"debian-13"` | no |
+| <a name="input_instance_type"></a> [instance\_type](#input\_instance\_type) | Node instance type. | `string` | `"cx23"` | no |
 | <a name="input_location"></a> [location](#input\_location) | Node location. | `string` | n/a | yes |
 | <a name="input_name"></a> [name](#input\_name) | Node name prefix. | `string` | n/a | yes |
 | <a name="input_network_name"></a> [network\_name](#input\_network\_name) | Node network name | `string` | `null` | no |
@@ -92,7 +92,7 @@ No modules.
 | <a name="output_vm_volumes"></a> [vm\_volumes](#output\_vm\_volumes) | List of all additional disks for every created server. |
 | <a name="output_vms"></a> [vms](#output\_vms) | Object of vm data based on name. |
 | <a name="output_vms_raw"></a> [vms\_raw](#output\_vms\_raw) | Raw object of hcloud server objects. |
-<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- END_TF_DOCS -->
 
 ## License
 
